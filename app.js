@@ -16,6 +16,7 @@ var app = express();
 app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
+var port = process.env.PORT || 3003;
 
 //USE PACKAGES
 app.use(require("express-session")({
@@ -476,6 +477,6 @@ app.post("/gettingg",function(req,res){
 
 //SERVER
 
-app.listen(3003,function(req,res){
+app.listen(port, function(req,res){
     console.log("SERVER STARTS AT PORT 3003");
 });
