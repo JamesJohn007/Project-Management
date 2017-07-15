@@ -10,13 +10,13 @@ var express               = require("express"),
     LocalStrategy         = require("passport-local"),
     passportLocalMongoose = require("passport-local-mongoose")
 
-mongoose.connect("mongodb://localhost/working");
+mongoose.connect(process.env.MONGODB_URI);
 var app = express();
 
 app.set("view engine","ejs");
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride("_method"));
-var port = process.env.PORT || 3003;
+var port = process.env.PORT || 3000;
 
 //USE PACKAGES
 app.use(require("express-session")({
@@ -209,6 +209,7 @@ app.post("/register",function(req,res){
             phonenumber: phonenumber,
             username: username}),req.body.password,function(err,user){
             passport.authenticate("local")(req,res,function(){
+                console.log(user);
                 res.redirect("/dashboard"); 
             });
         });
@@ -247,6 +248,7 @@ app.post("/register2",function(req,res){
             phonenumber: phonenumber,
             username: username}),req.body.password,function(err,develop){
             passport.authenticate("local")(req,res,function(){
+                console.log(develop)
                 res.redirect("/dashboard2"); 
             });
         });
