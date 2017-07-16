@@ -81,7 +81,7 @@ app.get("/",function(req,res){
     res.render("index");
 });
 
-app.get("/register",isLoggedIn,function(req,res){
+app.get("/register",function(req,res){
     res.render("register");
 });
 
@@ -89,7 +89,7 @@ app.get("/login",function(req,res){
     res.render('login', {error:'Please check your user credentials'});
 });
 
-app.get("/register2",isLoggedIn,function(req,res){
+app.get("/register2",function(req,res){
     res.render("register2");
 });
 
