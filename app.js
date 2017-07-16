@@ -81,7 +81,7 @@ app.get("/",function(req,res){
     res.render("index");
 });
 
-app.get("/register",function(req,res){
+app.get("/register",isLoggedIn,function(req,res){
     res.render("register");
 });
 
